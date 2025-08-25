@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engr Anjum Shehzad - Solar HVAC & Electrical Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             margin: 0;
@@ -13,9 +14,10 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background-color: #f9fafb;
             overflow-x: hidden;
         }
 
@@ -24,59 +26,65 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, #484855 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 1.2rem 0;
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         .header.scrolled {
-            background: rgba(48, 49, 53, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 58, 138, 0.95);
+            backdrop-filter: blur(12px);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ffd700;
+            color: #facc15;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: #ffffff;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -86,87 +94,96 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="solar" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="5" fill="rgba(255,255,255,0.1)" /></pattern></defs><rect width="100" height="100" fill="url(%23solar)" /></svg>');
+            opacity: 0.2;
         }
 
         .hero-content {
             z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
+            max-width: 900px;
+            padding: 0 1.5rem;
+            animation: fadeInUp 1.2s ease;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
         }
 
         .cta-button {
             display: inline-block;
-            background: #ffd700;
-            color: #333;
-            padding: 1rem 2rem;
+            background: #facc15;
+            color: #1e3a8a;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-button i {
+            margin-right: 0.5rem;
         }
 
         /* Services Section */
         .services {
-            padding: 4rem 0;
-            background: #f8f9fa;
+            padding: 5rem 0;
+            background: #ffffff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 3.5rem;
+            color: #1e3a8a;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(135deg, #1e40af 0%, #facc15 100%);
+            border-radius: 3px;
         }
 
         .service-item {
             display: flex;
             align-items: center;
             margin-bottom: 4rem;
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f9fafb;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(60px);
         }
 
         .service-item.animate {
@@ -175,8 +192,8 @@
         }
 
         .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .service-item:nth-child(even) {
@@ -185,101 +202,129 @@
 
         .service-image {
             flex: 1;
-            max-width: 400px;
-            margin: 0 2rem;
+            max-width: 450px;
+            margin: 0 2.5rem;
         }
 
         .service-image img {
             width: 100%;
-            height: 300px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .service-content {
             flex: 1;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
         }
 
         .service-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .service-content p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
         }
 
         .service-features {
             list-style: none;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .service-features li {
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             position: relative;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
+            font-size: 1rem;
+            color: #2d3748;
         }
 
-        .service-features li::before {
-            content: '✓';
+        .service-features li i {
             position: absolute;
             left: 0;
-            color: #28a745;
-            font-weight: bold;
-            font-size: 1.2rem;
+            color: #facc15;
+            font-size: 1.3rem;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 5rem 0;
             text-align: center;
         }
 
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
         }
 
         .contact-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #ffd700;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #facc15;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #facc15;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffffff;
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: #facc15;
         }
 
         /* Footer */
         .footer {
-            background: #333;
-            color: white;
+            background: #1e3a8a;
+            color: #ffffff;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
+            font-size: 1rem;
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -293,7 +338,11 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
             }
 
             .service-item {
@@ -302,11 +351,16 @@
             }
 
             .service-image {
-                margin: 0 0 2rem 0;
+                margin: 0 0 2.5rem 0;
+                max-width: 100%;
             }
 
             .service-content {
                 padding: 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
             }
         }
 
@@ -316,14 +370,13 @@
             top: 0;
             left: 0;
             width: 0%;
-            height: 3px;
-            background: #ffd700;
+            height: 4px;
+            background: #facc15;
             z-index: 1001;
             transition: width 0.3s ease;
         }
     </style>
 </head>
-
 <body>
     <div class="progress-bar" id="progress-bar"></div>
 
@@ -332,9 +385,9 @@
             <div class="logo">Engr Anjum Shehzad</div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -343,53 +396,30 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Engr Anjum Shehzad</h1>
-            <p>Professional Electrical & HVAC Solutions Expert</p>
-            <p>Specialized in Solar Systems, Green Energy, and Climate Control Solutions</p>
-            <a href="#services" class="cta-button">Explore Services</a>
+            <p><i class="fas fa-solar-panel"></i> Solar-Powered Solutions for a Sustainable Future</p>
+            <p>Expert in Solar Systems, Electrical, HVAC, and Precision Design</p>
+            <a href="#services" class="cta-button"><i class="fas fa-arrow-right"></i> Discover Our Services</a>
         </div>
     </section>
 
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Professional Services</h2>
+            <h2 class="section-title">Our Solar & Technical Services</h2>
 
-            <!-- Autocad Work -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/map.jpg?raw=true"
-                        alt="AutoCAD Drawings and Design">
-                </div>
-                <div class="service-content">
-                    <h3>AutoCAD Drawings, House Plans & Ducting Design</h3>
-                    <p>Precision-driven architectural and mechanical design services including detailed AutoCAD
-                        drawings, customized residential floor plans, and efficient ducting layouts for ventilation,
-                        HVAC, and industrial applications.</p>
-                    <ul class="service-features">
-                        <li>Professional AutoCAD drafting for construction and renovation</li>
-                        <li>Customized house planning and 2D/3D layouts</li>
-                        <li>Efficient HVAC and ducting system design</li>
-                        <li>Compliance with engineering and architectural standards</li>
-                        <li>Optimized space utilization and airflow planning</li>
-                    </ul>
-                       
-                </div>
-            </div>
             <!-- Solar Panel Systems -->
             <div class="service-item">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Solar Panel Installation">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solar Panel Installation">
                 </div>
                 <div class="service-content">
                     <h3>Solar Panel Systems & Green Energy</h3>
-                    <p>Complete solar energy solutions including supply and installation of high-quality solar panels,
-                        inverters, and green meter systems for sustainable energy generation.</p>
+                    <p>Harness the power of the sun with our comprehensive solar energy solutions, including high-efficiency solar panels, inverters, and green meter systems for sustainable energy generation.</p>
                     <ul class="service-features">
-                        <li>High-efficiency solar panels installation</li>
-                        <li>Advanced inverter systems</li>
-                        <li>Green meter supply & installation</li>
-                        <li>Solar panel structure elevated and S1/S2</li>
-                        <li>Complete system commissioning</li>
+                        <li><i class="fas fa-solar-panel"></i> High-efficiency solar panel installation</li>
+                        <li><i class="fas fa-plug"></i> Advanced inverter systems for optimal performance</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Green meter supply and installation</li>
+                        <li><i class="fas fa-bolt"></i> Elevated solar panel structures (S1/S2)</li>
+                        <li><i class="fas fa-check-circle"></i> Full system commissioning and testing</li>
                     </ul>
                 </div>
             </div>
@@ -397,19 +427,17 @@
             <!-- Electrical Protection Systems -->
             <div class="service-item">
                 <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/elec.jpg?raw=true"
-                        alt="Electrical Protection Systems">
+                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/elec.jpg?raw=true" alt="Electrical Protection Systems">
                 </div>
                 <div class="service-content">
                     <h3>Electrical Protection & Control Systems</h3>
-                    <p>Professional installation of electrical protection systems including ACB, DCB, surge protection
-                        devices, and comprehensive earthing solutions.</p>
+                    <p>Safeguard your systems with our professional electrical protection solutions, including ACB, DCB, surge protection devices, and robust earthing systems.</p>
                     <ul class="service-features">
-                        <li>ACB & DCB with full protection systems</li>
-                        <li>DC cables, breakers, and switches</li>
-                        <li>Surge Protection Devices (SPDs)</li>
-                        <li>Professional earthing systems</li>
-                        <li>Earthing rods installation</li>
+                        <li><i class="fas fa-shield-alt"></i> ACB & DCB with advanced protection systems</li>
+                        <li><i class="fas fa-plug"></i> DC cables, breakers, and switches</li>
+                        <li><i class="fas fa-bolt"></i> Surge Protection Devices (SPDs)</li>
+                        <li><i class="fas fa-ground"></i> Comprehensive earthing systems</li>
+                        <li><i class="fas fa-tools"></i> Professional earthing rod installation</li>
                     </ul>
                 </div>
             </div>
@@ -417,19 +445,17 @@
             <!-- HVAC Air Cooling Systems -->
             <div class="service-item">
                 <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/air.jpg?raw=true"
-                        alt="HVAC Air Cooling Systems">
+                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/air.jpg?raw=true" alt="HVAC Air Cooling Systems">
                 </div>
                 <div class="service-content">
                     <h3>HVAC & Air Cooling Systems</h3>
-                    <p>Expert installation of evaporator air coolers, ducting systems, and air supply solutions for
-                        optimal climate control in residential and commercial spaces.</p>
+                    <p>Stay cool and comfortable with our expert HVAC installations, including evaporator air coolers, GI ducting, and precise air supply solutions for residential and commercial spaces.</p>
                     <ul class="service-features">
-                        <li>Evaporator air coolers installation</li>
-                        <li>GI ducting for air coolers and chillers</li>
-                        <li>Air supply grills and dampers</li>
-                        <li>Air volume dampers with precise control</li>
-                        <li>Complete HVAC system integration</li>
+                        <li><i class="fas fa-fan"></i> Evaporator air cooler installation</li>
+                        <li><i class="fas fa-wind"></i> GI ducting for air coolers and chillers</li>
+                        <li><i class="fas fa-air-freshener"></i> Air supply grills and dampers</li>
+                        <li><i class="fas fa-sliders-h"></i> Precision air volume dampers</li>
+                        <li><i class="fas fa-cogs"></i> Seamless HVAC system integration</li>
                     </ul>
                 </div>
             </div>
@@ -437,19 +463,35 @@
             <!-- Comprehensive Installation Services -->
             <div class="service-item">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Professional Installation Services">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional Installation Services">
                 </div>
                 <div class="service-content">
                     <h3>Professional Installation & Maintenance</h3>
-                    <p>End-to-end installation services with professional expertise, ensuring quality workmanship and
-                        long-term reliability of all electrical and HVAC systems.</p>
+                    <p>Trust our expert team for end-to-end installation and maintenance services, ensuring top-quality workmanship and long-term reliability for all your systems.</p>
                     <ul class="service-features">
-                        <li>Expert installation team</li>
-                        <li>Quality assurance and testing</li>
-                        <li>Post-installation support</li>
-                        <li>Maintenance and service contracts</li>
-                        <li>24/7 emergency support available</li>
+                        <li><i class="fas fa-users"></i> Skilled installation professionals</li>
+                        <li><i class="fas fa-check-double"></i> Rigorous quality assurance and testing</li>
+                        <li><i class="fas fa-headset"></i> Comprehensive post-installation support</li>
+                        <li><i class="fas fa-tools"></i> Flexible maintenance contracts</li>
+                        <li><i class="fas fa-clock"></i> 24/7 emergency support services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Autocad Work -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/map.jpg?raw=true" alt="AutoCAD Drawings and Design">
+                </div>
+                <div class="service-content">
+                    <h3>AutoCAD Drawings, House Plans & Ducting Design</h3>
+                    <p>Precision-engineered design services with detailed AutoCAD drawings, customized house plans, and efficient ducting layouts for HVAC and industrial applications.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-drafting-compass"></i> Professional AutoCAD drafting for construction</li>
+                        <li><i class="fas fa-home"></i> Custom 2D/3D house plans and layouts</li>
+                        <li><i class="fas fa-wind"></i> Optimized HVAC ducting system design</li>
+                        <li><i class="fas fa-check-circle"></i> Compliance with industry standards</li>
+                        <li><i class="fas fa-ruler-combined"></i> Enhanced space utilization and airflow planning</li>
                     </ul>
                 </div>
             </div>
@@ -458,24 +500,23 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Get In Touch</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to start your next electrical or HVAC project?
-                Contact us today for professional consultation and quality service.</p>
-
+            <h2 class="section-title" style="color: #ffffff;">Get In Touch</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;"><i class="fas fa-solar-panel"></i> Ready to power your future with solar, electrical, or HVAC solutions? Contact us for expert consultation and unmatched service quality.</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <h4>Professional Expertise</h4>
-                    <p>Licensed mechanical engineer with extensive experience in solar systems and HVAC solutions</p>
+                    <h4><i class="fas fa-user-graduate"></i> Expert Engineering</h4>
+                    <p>Licensed mechanical engineer with deep expertise in solar and HVAC systems</p>
                 </div>
                 <div class="contact-item">
-                    <h4>Quality Assurance</h4>
-                    <p>All installations come with warranty and ongoing support for your peace of mind</p>
+                    <h4><i class="fas fa-shield-alt"></i> Guaranteed Quality</h4>
+                    <p>All installations include warranties and dedicated support for your confidence</p>
                 </div>
                 <div class="contact-item">
-                    <h4>Contact Information</h4>
-                    <p>Engr Anjum Shehzad<br>📞 <a href="tel:+923369950069" style="color: white;">+92 336 9950069</a>
-                        <br>📧 <a href="mailto:anjum_shezi@yahoo.com" style="color: white;">anjum_shezi@yahoo.com</a>
-                        <br>💬 <a href="https://wa.me/923369950069" target="_blank" style="color: white;"> Chat on WhatsApp</a></a>
+                    <h4><i class="fas fa-address-book"></i> Contact Information</h4>
+                    <p>Engr Anjum Shehzad<br>
+                        <i class="fas fa-phone"></i> <a href="tel:+923369950069">+92 336 9950069</a><br>
+                        <i class="fas fa-envelope"></i> <a href="mailto:anjum_shezi@yahoo.com">anjum_shezi@yahoo.com</a><br>
+                        <i class="fab fa-whatsapp"></i> <a href="https://wa.me/923369950069" target="_blank">Chat on WhatsApp</a>
                     </p>
                 </div>
             </div>
@@ -484,15 +525,14 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Engr Anjum Shehzad. All rights reserved. Professional Mechanical, Electrical and HVAC
-                Solutions.</p>
+            <p>&copy; 2025 Engr Anjum Shehzad. All rights reserved. Leading Solar, Electrical, and HVAC Solutions.</p>
         </div>
     </footer>
 
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -508,7 +548,6 @@
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             const progressBar = document.getElementById('progress-bar');
-
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
@@ -522,7 +561,7 @@
 
         // Animate service items on scroll
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
 
@@ -534,25 +573,23 @@
             });
         }, observerOptions);
 
-        // Observe all service items
         document.querySelectorAll('.service-item').forEach(item => {
             observer.observe(item);
         });
 
-        // Add staggered animation delay
+        // Staggered animation delay
         document.querySelectorAll('.service-item').forEach((item, index) => {
-            item.style.transitionDelay = '${index * 0.2}s';
+            item.style.transitionDelay = `${index * 0.25}s`;
         });
 
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
             if (hero) {
-                hero.style.transform = translateY('${scrolled * 0.5}px');
+                const scrolled = window.pageYOffset;
+                hero.style.backgroundPositionY = `${scrolled * 0.4}px`;
             }
         });
     </script>
 </body>
-
 </html>
