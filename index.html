@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engr Anjum Shehzad - Solar HVAC & Electrical Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
@@ -14,10 +14,10 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            color: #2d3748;
-            background-color: #f9fafb;
+            color: #e5e7eb;
+            background-color: #111827;
             overflow-x: hidden;
         }
 
@@ -26,7 +26,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1f2937 0%, #2563eb 100%);
             color: #ffffff;
             padding: 1.2rem 0;
             z-index: 1000;
@@ -34,7 +34,7 @@
         }
 
         .header.scrolled {
-            background: rgba(30, 58, 138, 0.95);
+            background: rgba(31, 41, 55, 0.95);
             backdrop-filter: blur(12px);
         }
 
@@ -48,9 +48,13 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: 1px;
+            background: linear-gradient(135deg, #facc15 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -85,8 +89,9 @@
         .hamburger span {
             width: 100%;
             height: 3px;
-            background-color: #ffffff;
+            background-color: #facc15;
             transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         .hamburger.active span:nth-child(1) {
@@ -104,7 +109,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.85) 0%, rgba(37, 99, 235, 0.85) 100%), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -124,8 +129,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="solar" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="5" fill="rgba(255,255,255,0.1)" /></pattern></defs><rect width="100" height="100" fill="url(%23solar)" /></svg>');
-            opacity: 0.2;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="solar" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="5" fill="rgba(250,204,21,0.2)" /></pattern></defs><rect width="100" height="100" fill="url(%23solar)" /></svg>');
+            opacity: 0.3;
             animation: solarPattern 20s linear infinite;
         }
 
@@ -142,15 +147,15 @@
         }
 
         .hero h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1.5rem;
+            font-weight: 400;
             margin-bottom: 2.5rem;
             opacity: 0.95;
         }
@@ -158,18 +163,18 @@
         .cta-button {
             display: inline-block;
             background: #facc15;
-            color: #1e3a8a;
-            padding: 1rem 2.5rem;
+            color: #1f2937;
+            padding: 1.2rem 3rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button i {
@@ -181,24 +186,24 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(250, 204, 21, 0.3) 0%, rgba(250, 204, 21, 0) 70%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.4) 0%, rgba(250, 204, 21, 0) 70%);
             transform: translate(-50%, -50%);
-            animation: flarePulse 3s ease-in-out infinite;
+            animation: flarePulse 2.5s ease-in-out infinite;
             z-index: 1;
             pointer-events: none;
         }
 
         @keyframes flarePulse {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
         }
 
         /* Services Section */
         .services {
-            padding: 5rem 0;
-            background: #ffffff;
+            padding: 6rem 0;
+            background: #1f2937;
         }
 
         .container {
@@ -209,10 +214,10 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            font-weight: 600;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 3.5rem;
-            color: #1e3a8a;
+            color: #facc15;
             position: relative;
         }
 
@@ -222,9 +227,9 @@
             bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(135deg, #1e40af 0%, #facc15 100%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(135deg, #2563eb 0%, #facc15 100%);
             border-radius: 3px;
         }
 
@@ -232,10 +237,10 @@
             display: flex;
             align-items: center;
             margin-bottom: 4rem;
-            background: #f9fafb;
+            background: #374151;
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             opacity: 0;
             transform: translateY(60px);
@@ -248,7 +253,7 @@
 
         .service-item:hover {
             transform: translateY(-12px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .service-item:nth-child(even) {
@@ -260,6 +265,7 @@
             max-width: 450px;
             margin: 0 2.5rem;
             position: relative;
+            overflow: hidden;
         }
 
         .service-image img {
@@ -267,12 +273,12 @@
             height: 320px;
             object-fit: cover;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
 
         .service-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .service-content {
@@ -281,10 +287,10 @@
         }
 
         .service-content h3 {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #facc15 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -292,7 +298,7 @@
 
         .service-content p {
             font-size: 1.15rem;
-            color: #4b5563;
+            color: #d1d5db;
             margin-bottom: 1.5rem;
         }
 
@@ -306,12 +312,12 @@
             position: relative;
             padding-left: 2.5rem;
             font-size: 1rem;
-            color: #2d3748;
+            color: #e5e7eb;
             transition: color 0.3s ease;
         }
 
         .service-features li:hover {
-            color: #1e40af;
+            color: #facc15;
         }
 
         .service-features li i {
@@ -331,9 +337,9 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1f2937 0%, #2563eb 100%);
             color: #ffffff;
-            padding: 5rem 0;
+            padding: 6rem 0;
             text-align: center;
         }
 
@@ -345,7 +351,7 @@
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             padding: 2.5rem;
             border-radius: 15px;
             backdrop-filter: blur(12px);
@@ -357,7 +363,7 @@
         }
 
         .contact-item h4 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
             color: #facc15;
@@ -384,7 +390,7 @@
 
         /* Footer */
         .footer {
-            background: #1e3a8a;
+            background: #1f2937;
             color: #ffffff;
             text-align: center;
             padding: 2.5rem 0;
@@ -412,8 +418,8 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(30, 58, 138, 0.95);
-                padding: 1rem 0;
+                background: rgba(31, 41, 55, 0.95);
+                padding: 1.5rem 0;
                 gap: 1.5rem;
             }
 
@@ -425,9 +431,13 @@
                 display: flex;
             }
 
+            .logo {
+                font-size: 1.5rem;
+            }
+
             .hero h1 {
                 margin-top: 20px;
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             .hero p {
@@ -517,7 +527,7 @@
                 </div>
                 <div class="service-content">
                     <h3>Solar Panel Systems & Green Energy</h3>
-                    <p>Harness the power of the sun with our comprehensive solar energy solutions, including high-efficiency solar panels, inverters, and green meter systems for sustainable energy generation.</p>
+                    <p>Harness the power of the sun with our cutting-edge solar energy solutions, featuring high-efficiency panels, advanced inverters, and smart green meter systems for sustainable power.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-solar-panel"></i> High-efficiency solar panel installation</li>
                         <li><i class="fas fa-plug"></i> Advanced inverter systems for optimal performance</li>
@@ -535,7 +545,7 @@
                 </div>
                 <div class="service-content">
                     <h3>Electrical Protection & Control Systems</h3>
-                    <p>Safeguard your systems with our professional electrical protection solutions, including ACB, DCB, surge protection devices, and robust earthing systems.</p>
+                    <p>Protect your infrastructure with our robust electrical solutions, including ACB, DCB, surge protection devices, and state-of-the-art earthing systems.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-shield-alt"></i> ACB & DCB with advanced protection systems</li>
                         <li><i class="fas fa-plug"></i> DC cables, breakers, and switches</li>
@@ -553,7 +563,7 @@
                 </div>
                 <div class="service-content">
                     <h3>HVAC & Air Cooling Systems</h3>
-                    <p>Stay cool and comfortable with our expert HVAC installations, including evaporator air coolers, GI ducting, and precise air supply solutions for residential and commercial spaces.</p>
+                    <p>Elevate comfort with our expertly designed HVAC systems, featuring evaporator coolers, precision GI ducting, and optimized air supply for homes and businesses.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-fan"></i> Evaporator air cooler installation</li>
                         <li><i class="fas fa-wind"></i> GI ducting for air coolers and chillers</li>
@@ -571,7 +581,7 @@
                 </div>
                 <div class="service-content">
                     <h3>Professional Installation & Maintenance</h3>
-                    <p>Trust our expert team for end-to-end installation and maintenance services, ensuring top-quality workmanship and long-term reliability for all your systems.</p>
+                    <p>Rely on our skilled team for seamless installation and maintenance services, delivering unmatched quality and reliability for all your systems.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-users"></i> Skilled installation professionals</li>
                         <li><i class="fas fa-check-double"></i> Rigorous quality assurance and testing</li>
@@ -589,7 +599,7 @@
                 </div>
                 <div class="service-content">
                     <h3>AutoCAD Drawings, House Plans & Ducting Design</h3>
-                    <p>Precision-engineered design services with detailed AutoCAD drawings, customized house plans, and efficient ducting layouts for HVAC and industrial applications.</p>
+                    <p>Transform your vision with our precision AutoCAD services, offering detailed house plans, HVAC ducting layouts, and optimized designs for industrial applications.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-drafting-compass"></i> Professional AutoCAD drafting for construction</li>
                         <li><i class="fas fa-home"></i> Custom 2D/3D house plans and layouts</li>
@@ -604,8 +614,8 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title" style="color: #ffffff;">Get In Touch</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;"><i class="fas fa-solar-panel"></i> Ready to power your future with solar, electrical, or HVAC solutions? Contact us for expert consultation and unmatched service quality.</p>
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;"><i class="fas fa-solar-panel"></i> Ready to power your future with innovative solar, electrical, or HVAC solutions? Contact us for expert consultation and exceptional service.</p>
             <div class="contact-info">
                 <div class="contact-item">
                     <h4><i class="fas fa-user-graduate"></i> Expert Engineering</h4>
