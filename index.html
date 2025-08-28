@@ -57,6 +57,7 @@
             display: flex;
             list-style: none;
             gap: 2.5rem;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -69,6 +70,35 @@
 
         .nav-links a:hover {
             color: #facc15;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Hero Section */
@@ -96,6 +126,12 @@
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="solar" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="5" fill="rgba(255,255,255,0.1)" /></pattern></defs><rect width="100" height="100" fill="url(%23solar)" /></svg>');
             opacity: 0.2;
+            animation: solarPattern 20s linear infinite;
+        }
+
+        @keyframes solarPattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
         }
 
         .hero-content {
@@ -138,6 +174,25 @@
 
         .cta-button i {
             margin-right: 0.5rem;
+        }
+
+        /* Solar Flare Animation */
+        .solar-flare {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.3) 0%, rgba(250, 204, 21, 0) 70%);
+            transform: translate(-50%, -50%);
+            animation: flarePulse 3s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes flarePulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
         }
 
         /* Services Section */
@@ -204,6 +259,7 @@
             flex: 1;
             max-width: 450px;
             margin: 0 2.5rem;
+            position: relative;
         }
 
         .service-image img {
@@ -212,6 +268,11 @@
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-image:hover img {
+            transform: scale(1.05);
         }
 
         .service-content {
@@ -246,6 +307,11 @@
             padding-left: 2.5rem;
             font-size: 1rem;
             color: #2d3748;
+            transition: color 0.3s ease;
+        }
+
+        .service-features li:hover {
+            color: #1e40af;
         }
 
         .service-features li i {
@@ -255,6 +321,12 @@
             font-size: 1.3rem;
             top: 50%;
             transform: translateY(-50%);
+            animation: iconPulse 1.5s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
         }
 
         /* Contact Section */
@@ -334,7 +406,23 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
-                display: nonr;
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(30, 58, 138, 0.95);
+                padding: 1rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .hero h1 {
@@ -351,6 +439,10 @@
                 text-align: center;
             }
 
+            .service-item:nth-child(even) {
+                flex-direction: column !important;
+            }
+
             .service-image {
                 margin: 0 0 2.5rem 0;
                 max-width: 100%;
@@ -362,6 +454,11 @@
 
             .section-title {
                 font-size: 2.2rem;
+            }
+
+            .solar-flare {
+                width: 200px;
+                height: 200px;
             }
         }
 
@@ -391,10 +488,16 @@
                     <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
     <section class="hero" id="home">
+        <div class="solar-flare"></div>
         <div class="hero-content">
             <h1>Engr Anjum Shehzad</h1>
             <p><i class="fas fa-solar-panel"></i> Solar-Powered Solutions for a Sustainable Future</p>
@@ -531,6 +634,23 @@
     </footer>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
