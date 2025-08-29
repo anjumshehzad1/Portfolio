@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engr Anjum Shehzad - Solar HVAC & Electrical Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gold-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --accent-color: #00d4ff;
+            --gold-accent: #ffd700;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,72 +29,152 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            color: #e5e7eb;
-            background-color: #111827;
+            color: var(--text-primary);
+            background: var(--dark-bg);
             overflow-x: hidden;
         }
 
-        /* Header Styles */
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f0f23, #1a1a3a, #2d1b69, #0f0f23);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Glass Morphism Header */
         .header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, #1f2937 0%, #2563eb 100%);
-            color: #ffffff;
-            padding: 1.2rem 0;
+            background: rgba(15, 15, 35, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 1.5rem 0;
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .header.scrolled {
-            background: rgba(31, 41, 55, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2.5rem;
+            padding: 0 3rem;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #facc15 0%, #ffffff 100%);
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3rem;
             transition: all 0.3s ease;
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
         }
 
         .nav-links a:hover {
-            color: #facc15;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
         }
 
         .hamburger {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 30px;
-            height: 25px;
+            width: 35px;
+            height: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -89,13 +182,13 @@
         .hamburger span {
             width: 100%;
             height: 3px;
-            background-color: #facc15;
+            background: var(--gold-gradient);
             transition: all 0.3s ease;
             border-radius: 2px;
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
+            transform: rotate(45deg) translate(8px, 8px);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -106,307 +199,540 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Hero Section */
+        /* Enhanced Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(31, 41, 55, 0.85) 0%, rgba(37, 99, 235, 0.85) 100%), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #ffffff;
+            color: var(--text-primary);
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 2rem;
+            animation: heroFadeIn 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem 3.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-gradient);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button i {
+            margin-right: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            font-size: 2.5rem;
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            font-size: 2rem;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        /* Modern Services Section */
+        .services {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            letter-spacing: -1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="solar" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="5" fill="rgba(250,204,21,0.2)" /></pattern></defs><rect width="100" height="100" fill="url(%23solar)" /></svg>');
-            opacity: 0.3;
-            animation: solarPattern 20s linear infinite;
-        }
-
-        @keyframes solarPattern {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 1.5rem;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #facc15;
-            color: #1f2937;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-button i {
-            margin-right: 0.5rem;
-        }
-
-        /* Solar Flare Animation */
-        .solar-flare {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(250, 204, 21, 0.4) 0%, rgba(250, 204, 21, 0) 70%);
-            transform: translate(-50%, -50%);
-            animation: flarePulse 2.5s ease-in-out infinite;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        @keyframes flarePulse {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 6rem 0;
-            background: #1f2937;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3.5rem;
-            color: #facc15;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 6px;
-            background: linear-gradient(135deg, #2563eb 0%, #facc15 100%);
-            border-radius: 3px;
-        }
-
-        .service-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 4rem;
-            background: #374151;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--primary-gradient);
             opacity: 0;
-            transform: translateY(60px);
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
-        .service-item.animate {
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .service-card.animate {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .service-item:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
         }
 
-        .service-item:nth-child(even) {
-            flex-direction: row-reverse;
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            gap: 2rem;
         }
 
-        .service-image {
-            flex: 1;
-            max-width: 450px;
-            margin: 0 2.5rem;
-            position: relative;
-            overflow: hidden;
+        .service-icon {
+            font-size: 4rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            min-width: 80px;
+            animation: iconFloat 3s ease-in-out infinite;
         }
 
-        .service-image img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .service-image:hover img {
-            transform: scale(1.1);
-        }
-
-        .service-content {
-            flex: 1;
-            padding: 0 2.5rem;
-        }
-
-        .service-content h3 {
-            font-size: 2.2rem;
+        .service-text h3 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #facc15 0%, #ffffff 100%);
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .service-text p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-features li {
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-features li:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .service-features li i {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            min-width: 20px;
+        }
+
+        .service-features li span {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Enhanced Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.95) 0%, rgba(102, 126, 234, 0.1) 100%);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="circuit" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="2" fill="rgba(0,212,255,0.1)" /><path d="M30,10 L30,50 M10,30 L50,30" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23circuit)" /></svg>');
+            opacity: 0.3;
+        }
+
+        .contact-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .contact-intro h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .service-content p {
-            font-size: 1.15rem;
-            color: #d1d5db;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .service-features li {
-            padding: 0.6rem 0;
-            position: relative;
-            padding-left: 2.5rem;
-            font-size: 1rem;
-            color: #e5e7eb;
-            transition: color 0.3s ease;
-        }
-
-        .service-features li:hover {
-            color: #facc15;
-        }
-
-        .service-features li i {
-            position: absolute;
-            left: 0;
-            color: #facc15;
+        .contact-intro p {
             font-size: 1.3rem;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: iconPulse 1.5s infinite;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        @keyframes iconPulse {
-            0%, 100% { transform: translateY(-50%) scale(1); }
-            50% { transform: translateY(-50%) scale(1.2); }
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #1f2937 0%, #2563eb 100%);
-            color: #ffffff;
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .contact-info {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .contact-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-card h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--gold-accent);
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-top: 3rem;
         }
 
-        .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(12px);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-item h4 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            color: #facc15;
-        }
-
-        .contact-item p {
-            font-size: 1.1rem;
-        }
-
-        .contact-item a {
-            color: #facc15;
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
         }
 
-        .contact-item a:hover {
-            color: #ffffff;
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
-        .contact-item i {
-            margin-right: 0.5rem;
-            color: #facc15;
+        .social-icon.whatsapp {
+            color: #25D366;
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        .social-icon.whatsapp::before {
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        .social-icon.whatsapp:hover::before {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .social-icon.gmail {
+            color: #EA4335;
+            border-color: rgba(234, 67, 53, 0.3);
+        }
+
+        .social-icon.gmail::before {
+            background: rgba(234, 67, 53, 0.1);
+        }
+
+        .social-icon.gmail:hover::before {
+            background: linear-gradient(135deg, #EA4335, #FBBC05);
+        }
+
+        .social-icon.phone {
+            color: var(--accent-color);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .social-icon.phone::before {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .social-icon.phone:hover::before {
+            background: var(--primary-gradient);
+        }
+
+        .social-icon.linkedin {
+            color: #0077B5;
+            border-color: rgba(0, 119, 181, 0.3);
+        }
+
+        .social-icon.linkedin::before {
+            background: rgba(0, 119, 181, 0.1);
+        }
+
+        .social-icon.linkedin:hover::before {
+            background: linear-gradient(135deg, #0077B5, #00A0DC);
+        }
+
+        .social-icon.facebook {
+            color: #1877F2;
+            border-color: rgba(24, 119, 242, 0.3);
+        }
+
+        .social-icon.facebook::before {
+            background: rgba(24, 119, 242, 0.1);
+        }
+
+        .social-icon.facebook:hover::before {
+            background: linear-gradient(135deg, #1877F2, #42A5F5);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.1);
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
         .footer {
-            background: #1f2937;
-            color: #ffffff;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
             text-align: center;
-            padding: 2.5rem 0;
+            padding: 3rem 0;
             font-size: 1rem;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--primary-gradient);
+            z-index: 1001;
+            transition: width 0.1s ease;
         }
 
         /* Responsive Design */
@@ -418,9 +744,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(31, 41, 55, 0.95);
-                padding: 1.5rem 0;
-                gap: 1.5rem;
+                background: rgba(15, 15, 35, 0.98);
+                backdrop-filter: blur(25px);
+                padding: 2rem 0;
+                gap: 1rem;
+                border-top: 1px solid var(--glass-border);
             }
 
             .nav-links.active {
@@ -431,69 +759,47 @@
                 display: flex;
             }
 
-            .logo {
-                font-size: 1.5rem;
+            .nav-container {
+                padding: 0 1.5rem;
             }
 
-            .hero h1 {
-                margin-top: 20px;
-                font-size: 2.5rem;
+            .hero-content {
+                padding: 0 1.5rem;
             }
 
-            .hero p {
-                font-size: 1.2rem;
+            .container {
+                padding: 0 1.5rem;
             }
- .cta-button {
-    display: block;         /* stack nicely */
-    width: 100%;            /* full width */
-    text-align: center;     /* center text */
-    padding: 1rem 1.5rem;   /* smaller padding */
-    font-size: 1rem;        /* smaller font */
-    border-radius: 12px;    /* less rounded on small screens */
-  }
 
-            .service-item {
-                flex-direction: column !important;
+            .service-header {
+                flex-direction: column;
                 text-align: center;
             }
 
-            .service-item:nth-child(even) {
-                flex-direction: column !important;
+            .service-features {
+                grid-template-columns: 1fr;
             }
 
-            .service-image {
-                margin: 0 0 2.5rem 0;
-                max-width: 100%;
+            .social-icons {
+                gap: 1.5rem;
+                flex-wrap: wrap;
             }
 
-            .service-content {
-                padding: 0;
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
 
-            .section-title {
-                font-size: 2.2rem;
+            .cta-button {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
             }
-
-            .solar-flare {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
-        /* Scroll Progress Bar */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: #facc15;
-            z-index: 1001;
-            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
     <div class="progress-bar" id="progress-bar"></div>
 
     <header class="header" id="header">
@@ -515,105 +821,124 @@
     </header>
 
     <section class="hero" id="home">
-        <div class="solar-flare"></div>
+        <div class="hero-bg"></div>
+        <div class="floating-elements">
+            <div class="floating-element"><i class="fas fa-solar-panel"></i></div>
+            <div class="floating-element"><i class="fas fa-bolt"></i></div>
+            <div class="floating-element"><i class="fas fa-fan"></i></div>
+        </div>
         <div class="hero-content">
             <h1>Engr Anjum Shehzad</h1>
-            <p><i class="fas fa-solar-panel"></i> Solar-Powered Solutions for a Sustainable Future</p>
-            <p>Expert in Solar Systems, Electrical, HVAC, and Precision Design</p>
-            <a href="#services" class="cta-button"><i class="fas fa-arrow-right"></i> Discover Our Services</a>
+            <p class="subtitle"> Solar-Powered Solutions for a Sustainable Future</p>
+            <p class="description">Expert in Solar Systems, Electrical, HVAC, and Precision Design</p>
+            <a href="#services" class="cta-button">
+                <i class="fas fa-rocket"></i> Explore Services
+            </a>
         </div>
     </section>
 
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Solar & Technical Services</h2>
+            <h2 class="section-title">Innovative Solutions & Services</h2>
 
-            <!-- Solar Panel Systems -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solar Panel Installation">
-                </div>
-                <div class="service-content">
-                    <h3>Solar Panel Systems & Green Energy</h3>
-                    <p>Harness the power of the sun with our cutting-edge solar energy solutions, featuring high-efficiency panels, advanced inverters, and smart green meter systems for sustainable power.</p>
+            <div class="services-grid">
+                <!-- Solar Panel Systems -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="service-text">
+                            <h3>Solar Panel Systems & Green Energy</h3>
+                            <p>Harness renewable energy with our cutting-edge solar solutions featuring high-efficiency panels, smart inverters, and intelligent green meter systems designed for maximum sustainability and performance.</p>
+                        </div>
+                    </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-solar-panel"></i> High-efficiency solar panel installation</li>
-                        <li><i class="fas fa-plug"></i> Advanced inverter systems for optimal performance</li>
-                        <li><i class="fas fa-tachometer-alt"></i> Green meter supply and installation</li>
-                        <li><i class="fas fa-bolt"></i> Elevated solar panel structures (S1/S2)</li>
-                        <li><i class="fas fa-check-circle"></i> Full system commissioning and testing</li>
+                        <li><i class="fas fa-solar-panel"></i><span>High-efficiency solar panel installation</span></li>
+                        <li><i class="fas fa-microchip"></i><span>Advanced inverter systems & optimization</span></li>
+                        <li><i class="fas fa-tachometer-alt"></i><span>Smart green meter supply & integration</span></li>
+                        <li><i class="fas fa-building"></i><span>Elevated solar structures (S1/S2)</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Complete system commissioning</span></li>
                     </ul>
                 </div>
-            </div>
 
-            <!-- Electrical Protection Systems -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/elec.jpg?raw=true" alt="Electrical Protection Systems">
-                </div>
-                <div class="service-content">
-                    <h3>Electrical Protection & Control Systems</h3>
-                    <p>Protect your infrastructure with our robust electrical solutions, including ACB, DCB, surge protection devices, and state-of-the-art earthing systems.</p>
+                <!-- Electrical Protection Systems -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="service-text">
+                            <h3>Electrical Protection & Control</h3>
+                            <p>Safeguard your infrastructure with advanced electrical protection systems, featuring ACB/DCB solutions, surge protection, and comprehensive earthing systems for maximum safety and reliability.</p>
+                        </div>
+                    </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-shield-alt"></i> ACB & DCB with advanced protection systems</li>
-                        <li><i class="fas fa-plug"></i> DC cables, breakers, and switches</li>
-                        <li><i class="fas fa-bolt"></i> Surge Protection Devices (SPDs)</li>
-                        <li><i class="fas fa-plug"></i> Comprehensive earthing systems</li>
-                        <li><i class="fas fa-tools"></i> Professional earthing rod installation</li>
+                        <li><i class="fas fa-shield-alt"></i><span>ACB & DCB protection systems</span></li>
+                        <li><i class="fas fa-plug"></i><span>DC cables, breakers & switches</span></li>
+                        <li><i class="fas fa-bolt"></i><span>Advanced surge protection devices</span></li>
+                        <li><i class="fas fa-ground"></i><span>Comprehensive earthing systems</span></li>
+                        <li><i class="fas fa-tools"></i><span>Professional earthing rod installation</span></li>
                     </ul>
                 </div>
-            </div>
 
-            <!-- HVAC Air Cooling Systems -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/air.jpg?raw=true" alt="HVAC Air Cooling Systems">
-                </div>
-                <div class="service-content">
-                    <h3>HVAC & Air Cooling Systems</h3>
-                    <p>Elevate comfort with our expertly designed HVAC systems, featuring evaporator coolers, precision GI ducting, and optimized air supply for homes and businesses.</p>
+                <!-- HVAC Air Cooling Systems -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-fan"></i>
+                        </div>
+                        <div class="service-text">
+                            <h3>HVAC & Air Cooling Systems</h3>
+                            <p>Experience optimal climate control with our expertly engineered HVAC solutions, featuring advanced evaporator systems, precision ducting, and intelligent air distribution for maximum comfort and efficiency.</p>
+                        </div>
+                    </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-fan"></i> Evaporator air cooler installation</li>
-                        <li><i class="fas fa-wind"></i> GI ducting for air coolers and chillers</li>
-                        <li><i class="fas fa-air-freshener"></i> Air supply grills and dampers</li>
-                        <li><i class="fas fa-sliders-h"></i> Precision air volume dampers</li>
-                        <li><i class="fas fa-cogs"></i> Seamless HVAC system integration</li>
+                        <li><i class="fas fa-snowflake"></i><span>Evaporator air cooler systems</span></li>
+                        <li><i class="fas fa-wind"></i><span>Precision GI ducting design</span></li>
+                        <li><i class="fas fa-air-freshener"></i><span>Air supply grills & dampers</span></li>
+                        <li><i class="fas fa-sliders-h"></i><span>Smart air volume control</span></li>
+                        <li><i class="fas fa-cogs"></i><span>Integrated HVAC automation</span></li>
                     </ul>
                 </div>
-            </div>
 
-            <!-- Comprehensive Installation Services -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional Installation Services">
-                </div>
-                <div class="service-content">
-                    <h3>Professional Installation & Maintenance</h3>
-                    <p>Rely on our skilled team for seamless installation and maintenance services, delivering unmatched quality and reliability for all your systems.</p>
+                <!-- Professional Installation Services -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="service-text">
+                            <h3>Professional Installation & Maintenance</h3>
+                            <p>Trust our certified professionals for seamless installation and ongoing maintenance services, ensuring optimal performance and longevity of your systems with guaranteed quality and reliability.</p>
+                        </div>
+                    </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-users"></i> Skilled installation professionals</li>
-                        <li><i class="fas fa-check-double"></i> Rigorous quality assurance and testing</li>
-                        <li><i class="fas fa-headset"></i> Comprehensive post-installation support</li>
-                        <li><i class="fas fa-tools"></i> Flexible maintenance contracts</li>
-                        <li><i class="fas fa-clock"></i> 24/7 emergency support services</li>
+                        <li><i class="fas fa-users-cog"></i><span>Certified installation experts</span></li>
+                        <li><i class="fas fa-check-double"></i><span>Rigorous quality assurance</span></li>
+                        <li><i class="fas fa-headset"></i><span>24/7 technical support</span></li>
+                        <li><i class="fas fa-calendar-check"></i><span>Preventive maintenance programs</span></li>
+                        <li><i class="fas fa-medal"></i><span>Performance guarantees</span></li>
                     </ul>
                 </div>
-            </div>
 
-            <!-- Autocad Work -->
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://github.com/anjumshehzad1/Portfolio/blob/main/map.jpg?raw=true" alt="AutoCAD Drawings and Design">
-                </div>
-                <div class="service-content">
-                    <h3>AutoCAD Drawings, House Plans & Ducting Design</h3>
-                    <p>Transform your vision with our precision AutoCAD services, offering detailed house plans, HVAC ducting layouts, and optimized designs for industrial applications.</p>
+                <!-- AutoCAD Work -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="service-text">
+                            <h3>AutoCAD Design & Engineering</h3>
+                            <p>Bring your projects to life with our precision AutoCAD services, delivering detailed architectural plans, optimized HVAC layouts, and comprehensive technical drawings for residential and industrial applications.</p>
+                        </div>
+                    </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-drafting-compass"></i> Professional AutoCAD drafting for construction</li>
-                        <li><i class="fas fa-home"></i> Custom 2D/3D house plans and layouts</li>
-                        <li><i class="fas fa-wind"></i> Optimized HVAC ducting system design</li>
-                        <li><i class="fas fa-check-circle"></i> Compliance with industry standards</li>
-                        <li><i class="fas fa-ruler-combined"></i> Enhanced space utilization and airflow planning</li>
+                        <li><i class="fas fa-blueprint"></i><span>Professional AutoCAD drafting</span></li>
+                        <li><i class="fas fa-home"></i><span>Custom 2D/3D house plans</span></li>
+                        <li><i class="fas fa-project-diagram"></i><span>HVAC ducting system design</span></li>
+                        <li><i class="fas fa-ruler-combined"></i><span>Space optimization planning</span></li>
+                        <li><i class="fas fa-certificate"></i><span>Industry standard compliance</span></li>
                     </ul>
                 </div>
             </div>
@@ -622,37 +947,54 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;"><i class="fas fa-solar-panel"></i> Ready to power your future with innovative solar, electrical, or HVAC solutions? Contact us for expert consultation and exceptional service.</p>
-            <div class="contact-info">
-                <div class="contact-item">
+            <div class="contact-intro">
+                <h2>Let's Power Your Future</h2>
+                <p>Ready to transform your space with innovative solar, electrical, or HVAC solutions? Connect with us for expert consultation and exceptional service that exceeds expectations.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
                     <h4><i class="fas fa-user-graduate"></i> Expert Engineering</h4>
-                    <p>Licensed mechanical engineer with deep expertise in solar and HVAC systems</p>
+                    <p>Licensed mechanical engineer with extensive expertise in renewable energy and climate control systems</p>
                 </div>
-                <div class="contact-item">
-                    <h4><i class="fas fa-shield-alt"></i> Guaranteed Quality</h4>
-                    <p>All installations include warranties and dedicated support for your confidence</p>
+                <div class="contact-card">
+                    <h4><i class="fas fa-award"></i> Guaranteed Excellence</h4>
+                    <p>All installations backed by comprehensive warranties and dedicated ongoing support for complete peace of mind</p>
                 </div>
-                <div class="contact-item">
-                    <h4><i class="fas fa-address-book"></i> Contact Information</h4>
-                    <p>Engr Anjum Shehzad<br>
-                        <i class="fas fa-phone"></i> <a href="tel:+923369950069">+92 336 9950069</a><br>
-                        <i class="fas fa-envelope"></i> <a href="mailto:anjum_shezi@yahoo.com">anjum_shezi@yahoo.com</a><br>
-                        <i class="fab fa-whatsapp"></i> <a href="https://wa.me/923369950069" target="_blank">Chat on WhatsApp</a>
-                    </p>
+                <div class="contact-card">
+                    <h4><i class="fas fa-rocket"></i> Innovation First</h4>
+                    <p>Cutting-edge technology and sustainable solutions designed to future-proof your energy needs</p>
                 </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://wa.me/923369950069" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:anjum_shezi@yahoo.com" class="social-icon gmail" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+923369950069" class="social-icon phone" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mechanical-engineer-anjum-shehzad" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.facebook.com/anjum.shezi" target="_blank" class="social-icon facebook" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Engr Anjum Shehzad. All rights reserved. Leading Solar, Electrical, and HVAC Solutions.</p>
+            <p>&copy; 2025 Engr Anjum Shehzad. Leading the Future of Solar, Electrical & HVAC Solutions.</p>
         </div>
     </footer>
 
     <script>
-        // Hamburger Menu Toggle
+        // Enhanced Mobile Menu
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.querySelector('.nav-links');
 
@@ -661,7 +1003,7 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close menu on link click (mobile)
+        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -669,66 +1011,125 @@
             });
         });
 
-        // Smooth scrolling for navigation links
+        // Enhanced smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Header scroll effect
+        // Enhanced header scroll effects
+        let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             const progressBar = document.getElementById('progress-bar');
-            if (window.scrollY > 100) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
 
-            // Progress bar
-            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            progressBar.style.width = scrolled + '%';
+            // Progress bar with smooth animation
+            const scrolled = (scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = Math.min(scrolled, 100) + '%';
+            
+            lastScrollTop = scrollTop;
         });
 
-        // Animate service items on scroll
+        // Enhanced intersection observer for animations
         const observerOptions = {
-            threshold: 0.15,
+            threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 200);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-item').forEach(item => {
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(item => {
             observer.observe(item);
         });
 
-        // Staggered animation delay
-        document.querySelectorAll('.service-item').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.25}s`;
-        });
-
-        // Parallax effect for hero section
+        // Parallax effect for hero
         window.addEventListener('scroll', () => {
             const hero = document.querySelector('.hero');
-            if (hero) {
-                const scrolled = window.pageYOffset;
-                hero.style.backgroundPositionY = `${scrolled * 0.4}px`;
+            const scrolled = window.pageYOffset;
+            if (hero && scrolled < window.innerHeight) {
+                const rate = scrolled * -0.5;
+                hero.querySelector('.hero-bg').style.transform = `translate3d(0, ${rate}px, 0)`;
             }
         });
+
+        // Add click animations for social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = '50%';
+                ripple.style.top = '50%';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.marginLeft = '-10px';
+                ripple.style.marginTop = '-10px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Typing effect for hero subtitle
+        const subtitle = document.querySelector('.hero .subtitle');
+        const text = subtitle.innerHTML;
+        subtitle.innerHTML = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                subtitle.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
     </script>
 </body>
 </html>
